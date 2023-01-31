@@ -1,5 +1,6 @@
 package com.example.yanotes
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,5 +26,10 @@ class MainActivity : AppCompatActivity() {
 
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter=rvAdapter(this,list)
+
+        addnote.setOnClickListener {
+            val intent = Intent(this,AddNoteActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

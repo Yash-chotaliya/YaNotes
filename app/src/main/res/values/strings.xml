@@ -3,4 +3,8 @@
     <string name="yanotes">YaNotes </string>
     <string name="title">Title</string>
     <string name="time">Time</string>
+    <string name="undo">undo</string>
+    <string name="redo">redo</string>
+    <string name="save">save</string>
+    <string name="text">Text</string>
 </resources>
