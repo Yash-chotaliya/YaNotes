@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_add_note.*
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
@@ -15,6 +16,7 @@ import java.util.*
 class AddNoteActivity : AppCompatActivity() {
 
     private lateinit var appdb : NoteDatabase
+    private lateinit var viewModel: NotesViewModel
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +25,7 @@ class AddNoteActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         appdb = NoteDatabase.getInstance(this)
+        viewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
 
         val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
         val currentDate = sdf.format(Date())
@@ -60,9 +63,7 @@ class AddNoteActivity : AppCompatActivity() {
         if(x.isNotEmpty() && y.isNotEmpty() && z.isNotEmpty()){
 
             val notes = Notes(0,x,y,z)
-            GlobalScope.launch(Dispatchers.IO){
-                appdb.getNoteDao().insertt(notes)
-            }
+            viewModel.insert(notes)
 
             Toast.makeText(this,"inserted successfilly",Toast.LENGTH_SHORT).show()
             startActivity(Intent(this,MainActivity::class.java))
