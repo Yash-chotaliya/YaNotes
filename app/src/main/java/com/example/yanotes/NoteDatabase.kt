@@ -16,19 +16,18 @@ abstract class NoteDatabase : RoomDatabase(){
         private var INSTANCE: NoteDatabase? = null
 
         fun getInstance(context: Context): NoteDatabase {
+            val instance = INSTANCE
+            if(instance!=null){
+                return instance
+            }
             synchronized(this) {
-                var instance = INSTANCE
 
-                if (instance == null) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        NoteDatabase::class.java,
-                        "sleep_history_database"
-                    )
-                        .fallbackToDestructiveMigration()
-                        .build()
-                    INSTANCE = instance
-                }
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    NoteDatabase::class.java,
+                    "app_database"
+                ).build()
+                INSTANCE = instance
                 return instance
             }
         }
