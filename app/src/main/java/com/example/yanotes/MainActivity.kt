@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,9 +15,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        rv.layoutManager = LinearLayoutManager(this)
         viewmodel = ViewModelProvider(this).get(NotesViewModel::class.java)
         viewmodel.getall.observe(this, Observer { list->
-            rv.adapter = rvAdapter(this,list)
+            rv.adapter = rvAdapter(this,list.reversed())
 
         })
 
