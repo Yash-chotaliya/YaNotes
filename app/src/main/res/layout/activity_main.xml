@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00BCD4"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/name"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:text="@string/yanotes"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="10dp"
-        android:textStyle="bold|italic"
+        android:text="@string/yanotes"
         android:textColor="@color/black"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:textStyle="bold|italic" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
@@ -23,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
+        tools:listitem="@layout/rvlayout"
         android:layout_marginTop="30dp">
 
     </androidx.recyclerview.widget.RecyclerView>

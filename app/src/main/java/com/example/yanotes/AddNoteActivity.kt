@@ -15,7 +15,6 @@ import java.util.*
 
 class AddNoteActivity : AppCompatActivity() {
 
-    private lateinit var appdb : NoteDatabase
     private lateinit var viewModel: NotesViewModel
 
     @SuppressLint("SimpleDateFormat")
@@ -24,7 +23,6 @@ class AddNoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_note)
         setSupportActionBar(toolbar)
 
-        appdb = NoteDatabase.getInstance(this)
         viewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
 
         val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
@@ -54,7 +52,6 @@ class AddNoteActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     private fun savedta(){
         val x = tTitle.text.toString()
         val y = time.text.toString()

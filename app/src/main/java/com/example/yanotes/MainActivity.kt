@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), IrvAdapter {
 
     private lateinit var viewmodel : NotesViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         rv.layoutManager = LinearLayoutManager(this)
         viewmodel = ViewModelProvider(this).get(NotesViewModel::class.java)
         viewmodel.getall.observe(this, Observer { list->
-            rv.adapter = rvAdapter(this,list.reversed())
+            rv.adapter = rvAdapter(this,list.reversed(),this)
 
         })
 
@@ -26,5 +26,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,AddNoteActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onItemClicked(x: Int) {
+        viewmodel.delete(x)
     }
 }
