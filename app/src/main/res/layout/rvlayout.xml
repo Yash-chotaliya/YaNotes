@@ -22,13 +22,13 @@
             android:textColor="@color/black"/>
 
         <ImageView
-            android:id="@+id/more"
-            android:layout_width="39dp"
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="34dp"
             android:layout_marginEnd="1dp"
-            android:src="@drawable/ic_baseline_more_vert_24" />
+            android:src="@drawable/ic_baseline_delete_24" />
 
         <TextView
             android:id="@+id/time"

@@ -15,7 +15,7 @@ class rvAdapter(private val context: Context, private val tlist:List<Notes>,val 
     private lateinit var viewModel: NotesViewModel
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewholder = ViewHolder(LayoutInflater.from(context).inflate(R.layout.rvlayout,parent,false))
-        viewholder.more.setOnClickListener {
+        viewholder.delete.setOnClickListener {
             listener.onItemClicked(tlist[viewholder.adapterPosition].id)
         }
         return viewholder
@@ -35,7 +35,7 @@ class rvAdapter(private val context: Context, private val tlist:List<Notes>,val 
         val title: TextView = itemview.title
         val time:TextView = itemview.time
         val text:TextView = itemview.text
-        val more:ImageView=itemview.more
+        val delete:ImageView=itemview.delete
     }
 }
 

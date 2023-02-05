@@ -3,6 +3,9 @@ package com.example.yanotes
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +32,14 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
     }
 
     override fun onItemClicked(x: Int) {
-        viewmodel.delete(x)
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("are you sure ?")
+        builder.setIcon(R.drawable.ic_baseline_delete_24)
+        builder.setPositiveButton("Yes"){dialogInterface, which ->
+            viewmodel.delete(x)
+        }
+        builder.setNegativeButton("No"){dialogInterface , which ->
+        }
+        builder.create().show()
     }
 }

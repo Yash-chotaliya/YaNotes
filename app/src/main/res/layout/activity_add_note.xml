@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF"
+    android:background="#00BCD4"
     tools:context=".AddNoteActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"/>
+        android:background="#00BCD4"/>
 
     <EditText
         android:id="@+id/tTitle"
@@ -37,7 +36,7 @@
         android:padding="5dp"
         android:hint="@string/time"
         android:textSize="20sp"
-        android:textColor="#716D6D" />
+        android:textColor="#000000" />
 
     <ScrollView
         android:layout_margin="5dp"

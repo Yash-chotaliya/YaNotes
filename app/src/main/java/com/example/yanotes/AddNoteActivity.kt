@@ -58,19 +58,13 @@ class AddNoteActivity : AppCompatActivity() {
         val z = text.text.toString()
 
         if(x.isNotEmpty() && y.isNotEmpty() && z.isNotEmpty()){
-
             val notes = Notes(0,x,y,z)
             viewModel.insert(notes)
-
-            Toast.makeText(this,"inserted successfilly",Toast.LENGTH_SHORT).show()
             startActivity(Intent(this,MainActivity::class.java))
             finish()
         }
         else{
             Toast.makeText(this,"enter data",Toast.LENGTH_SHORT).show()
-
         }
-
     }
-
 }
