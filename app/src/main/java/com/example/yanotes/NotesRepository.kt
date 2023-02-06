@@ -1,6 +1,5 @@
 package com.example.yanotes
 
-import android.provider.ContactsContract.CommonDataKinds.Note
 import androidx.lifecycle.LiveData
 
 class NotesRepository(private val notesDao: NotesDao) {

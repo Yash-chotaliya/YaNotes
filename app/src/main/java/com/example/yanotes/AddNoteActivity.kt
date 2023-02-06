@@ -50,14 +50,14 @@ class AddNoteActivity : AppCompatActivity() {
         val y = time.text.toString()
         val z = text.text.toString()
 
-        if(x.isNotEmpty() && y.isNotEmpty() && z.isNotEmpty()){
+        if(x.isEmpty()){
+            Toast.makeText(this,"Title is mandatory",Toast.LENGTH_SHORT).show()
+        }
+        else {
             val notes = Notes(0,x,y,z)
             viewModel.insert(notes)
             startActivity(Intent(this,MainActivity::class.java))
             finish()
-        }
-        else{
-            Toast.makeText(this,"enter data",Toast.LENGTH_SHORT).show()
         }
     }
 }

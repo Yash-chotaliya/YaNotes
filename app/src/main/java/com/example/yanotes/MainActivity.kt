@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
     }
 
     @SuppressLint("InflateParams")
-    override fun onItemClicked(x: Int) {
+    override fun onItemClickeddelete(x: Int) {
         val builder = Dialog(this)
         builder.setContentView(layoutInflater.inflate(R.layout.dialogue,null))
         builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -47,6 +47,13 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
             viewmodel.delete(x)
             builder.dismiss()
         }
+    }
 
+    override fun onlayoutclicked(notes: Notes) {
+        val intent = Intent(this,shownotes::class.java)
+        intent.putExtra("title",notes.title)
+        intent.putExtra("time",notes.time)
+        intent.putExtra("text",notes.text)
+        startActivity(intent)
     }
 }

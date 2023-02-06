@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFEB3B"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <TextView
@@ -39,6 +39,7 @@
         android:backgroundTint="@color/white"
         android:layout_marginBottom="20dp"
         android:src="@drawable/ic_baseline_add_24"
-        android:layout_marginEnd="20dp" />
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/todo" />
 
 </RelativeLayout>

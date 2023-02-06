@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#FFFFFF"
-    tools:context=".AddNoteActivity">
+    tools:context=".shownotes">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -16,12 +16,10 @@
         android:layout_height="wrap_content"
         android:background="#FFFFFF"/>
 
-    <EditText
+    <TextView
         android:id="@+id/tTitle"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:inputType="text"
-        android:outlineProvider="none"
         android:hint="@string/title"
         android:textColorHint="#959191"
         android:textColor="@color/black"
@@ -30,8 +28,7 @@
         android:textSize="30sp"
         tools:ignore="TextViewEdits"
         android:padding="5dp"
-        android:layout_margin="5dp"
-        android:importantForAutofill="no" />
+        android:layout_margin="5dp"/>
 
     <TextView
         android:id="@+id/time"
@@ -49,11 +46,10 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <EditText
+        <TextView
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
             android:background="#FFFFFF"
             android:gravity="start"
             android:hint="@string/text"
@@ -61,11 +57,7 @@
             android:minLines="17"
             android:padding="5dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:importantForAutofill="no" />
+            android:textSize="20sp" />
     </ScrollView>
-
-
-
 
 </LinearLayout>

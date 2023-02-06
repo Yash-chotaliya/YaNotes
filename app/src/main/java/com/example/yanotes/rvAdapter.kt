@@ -5,16 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rvlayout.view.*
 
-class rvAdapter(private val context: Context, private val tlist:List<Notes>,val listener:IrvAdapter):RecyclerView.Adapter<rvAdapter.ViewHolder>() {
+class rvAdapter(private val context: Context, private val tlist:List<Notes>, private val listener:IrvAdapter):RecyclerView.Adapter<rvAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewholder = ViewHolder(LayoutInflater.from(context).inflate(R.layout.rvlayout,parent,false))
         viewholder.delete.setOnClickListener {
-            listener.onItemClicked(tlist[viewholder.adapterPosition].id)
+            listener.onItemClickeddelete(tlist[viewholder.adapterPosition].id)
+        }
+        viewholder.rl.setOnClickListener {
+            listener.onlayoutclicked(tlist[viewholder.adapterPosition])
         }
         return viewholder
     }
@@ -22,7 +26,6 @@ class rvAdapter(private val context: Context, private val tlist:List<Notes>,val 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text = tlist[position].title
         holder.time.text = tlist[position].time
-        holder.text.text = tlist[position].text
     }
 
     override fun getItemCount(): Int {
@@ -32,11 +35,12 @@ class rvAdapter(private val context: Context, private val tlist:List<Notes>,val 
     class ViewHolder(itemview:View):RecyclerView.ViewHolder(itemview) {
         val title: TextView = itemview.title
         val time:TextView = itemview.time
-        val text:TextView = itemview.text
         val delete:ImageView=itemview.delete
+        val rl : RelativeLayout= itemview.rl
     }
 }
 
 interface IrvAdapter{
-    fun onItemClicked(x:Int)
+    fun onItemClickeddelete(x:Int)
+    fun onlayoutclicked(notes:Notes)
 }
