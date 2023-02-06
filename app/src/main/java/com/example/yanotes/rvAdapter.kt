@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rvlayout.view.*
 
 class rvAdapter(private val context: Context, private val tlist:List<Notes>,val listener:IrvAdapter):RecyclerView.Adapter<rvAdapter.ViewHolder>() {
 
-    private lateinit var viewModel: NotesViewModel
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewholder = ViewHolder(LayoutInflater.from(context).inflate(R.layout.rvlayout,parent,false))
         viewholder.delete.setOnClickListener {

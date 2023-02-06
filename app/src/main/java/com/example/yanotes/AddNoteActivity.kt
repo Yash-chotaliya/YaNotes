@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_add_note.*
-import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -17,7 +16,7 @@ class AddNoteActivity : AppCompatActivity() {
 
     private lateinit var viewModel: NotesViewModel
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SimpleDateFormat", "ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_note)
@@ -41,12 +40,6 @@ class AddNoteActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.save ->{
                 savedta()
-            }
-            R.id.undo->{
-                Toast.makeText(this,"undo",Toast.LENGTH_SHORT).show()
-            }
-            R.id.redo->{
-                Toast.makeText(this,"redo",Toast.LENGTH_SHORT).show()
             }
         }
         return super.onOptionsItemSelected(item)

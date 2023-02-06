@@ -3,15 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#00BCD4"
+    android:background="#FFEB3B"
     tools:context=".AddNoteActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
+        app:title="YaNotes"
+        app:titleTextColor="@color/black"
         android:layout_height="wrap_content"
-        android:background="#00BCD4"/>
+        android:background="#FFEB3B"/>
 
     <EditText
         android:id="@+id/tTitle"
@@ -20,6 +23,7 @@
         android:inputType="text"
         android:outlineProvider="none"
         android:hint="@string/title"
+        android:textColorHint="#959191"
         android:textColor="@color/black"
         android:background="#FFFFFF"
         android:gravity="center_vertical"
@@ -34,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
+        android:textColorHint="#959191"
         android:hint="@string/time"
         android:textSize="20sp"
         android:textColor="#000000" />
@@ -50,6 +55,7 @@
             android:background="#FFFFFF"
             android:gravity="start"
             android:hint="@string/text"
+            android:textColorHint="#959191"
             android:minLines="17"
             android:padding="5dp"
             android:textColor="@color/black"

@@ -1,15 +1,17 @@
 package com.example.yanotes
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.dialogue.*
 
 class MainActivity : AppCompatActivity(), IrvAdapter {
 
@@ -31,15 +33,20 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
         }
     }
 
+    @SuppressLint("InflateParams")
     override fun onItemClicked(x: Int) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("are you sure ?")
-        builder.setIcon(R.drawable.ic_baseline_delete_24)
-        builder.setPositiveButton("Yes"){dialogInterface, which ->
+        val builder = Dialog(this)
+        builder.setContentView(layoutInflater.inflate(R.layout.dialogue,null))
+        builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        builder.show()
+
+        builder.no.setOnClickListener {
+            builder.dismiss()
+        }
+        builder.yes.setOnClickListener {
             viewmodel.delete(x)
+            builder.dismiss()
         }
-        builder.setNegativeButton("No"){dialogInterface , which ->
-        }
-        builder.create().show()
+
     }
 }
