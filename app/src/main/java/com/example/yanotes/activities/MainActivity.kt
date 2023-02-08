@@ -1,4 +1,4 @@
-package com.example.yanotes
+package com.example.yanotes.activities
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -10,6 +10,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.yanotes.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialogue.*
 
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
         })
 
         addnote.setOnClickListener {
-            val intent = Intent(this,AddNoteActivity::class.java)
+            val intent = Intent(this, AddNoteActivity::class.java)
             startActivity(intent)
         }
     }
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
     }
 
     override fun onlayoutclicked(notes: Notes) {
-        val intent = Intent(this,shownotes::class.java)
+        val intent = Intent(this, shownotes::class.java)
         intent.putExtra("title",notes.title)
         intent.putExtra("time",notes.time)
         intent.putExtra("text",notes.text)

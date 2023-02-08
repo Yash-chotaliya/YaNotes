@@ -1,4 +1,6 @@
-package com.example.yanotes
+package com.example.yanotes.activities
+
+import com.example.yanotes.NotesViewModel
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,6 +10,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.yanotes.Notes
+import com.example.yanotes.R
 import kotlinx.android.synthetic.main.activity_add_note.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,7 +28,7 @@ class AddNoteActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
 
-        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+        val sdf = SimpleDateFormat("MMM dd , hh:mm a EEE")
         val currentDate = sdf.format(Date())
 
         time.text = currentDate
@@ -32,7 +36,7 @@ class AddNoteActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.actionbarmenu,menu)
+        menuInflater.inflate(R.menu.addbuttonmenu,menu)
         return super.onCreateOptionsMenu(menu)
     }
 

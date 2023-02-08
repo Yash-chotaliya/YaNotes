@@ -11,4 +11,5 @@
     <string name="dialoguecontent">are you sure you want to delete this note?</string>
     <string name="no">no</string>
     <string name="yes">yes</string>
+    <string name="copy">copy</string>
 </resources>

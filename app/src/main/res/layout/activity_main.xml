@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".MainActivity">
+    android:background="#000000"
+    tools:context=".activities.MainActivity">
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="17dp"
         android:text="@string/yanotes"
-        android:textColor="@color/black"
+        android:textColor="#FFC107"
+        android:layout_marginTop="10dp"
         android:textSize="40sp"
-        android:typeface="monospace"
-        android:textStyle="bold" />
+        android:textStyle="normal|italic" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
@@ -27,7 +26,6 @@
         android:layout_below="@+id/name"
         tools:listitem="@layout/rvlayout"
         android:layout_marginTop="30dp">
-
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -36,8 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/white"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="#FFC107"
         android:src="@drawable/ic_baseline_add_24"
         android:layout_marginEnd="20dp"
         android:contentDescription="@string/todo" />
