@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
         setContentView(R.layout.activity_main)
 
         rv.layoutManager = LinearLayoutManager(this)
-        viewmodel = ViewModelProvider(this).get(NotesViewModel::class.java)
+        viewmodel = ViewModelProvider(this)[NotesViewModel::class.java]
         viewmodel.getall.observe(this, Observer { list->
             rv.adapter = rvAdapter(this,list.reversed(),this)
 
@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
     }
 
     override fun onlayoutclicked(notes: Notes) {
-        val intent = Intent(this, shownotes::class.java)
+        val intent = Intent(this, ShowNotes::class.java)
+        intent.putExtra("id",notes.id)
         intent.putExtra("title",notes.title)
         intent.putExtra("time",notes.time)
         intent.putExtra("text",notes.text)

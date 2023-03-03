@@ -29,7 +29,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="34dp"
             android:layout_marginEnd="1dp"
-            android:src="@drawable/ic_baseline_delete_24"
+            android:src="@drawable/delete_for_main"
             android:contentDescription="@string/todo" />
 
         <TextView
