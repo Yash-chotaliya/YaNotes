@@ -83,12 +83,12 @@
             android:src="@drawable/delete_for_shownotes"
             tools:ignore="ContentDescription" />
         <ImageButton
-            android:id="@+id/savenote"
+            android:id="@+id/sharenote"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@color/black"
             android:padding="10dp"
-            android:src="@drawable/not_saved"
+            android:src="@drawable/ic_baseline_share_24"
             tools:ignore="ContentDescription" />
 
     </LinearLayout>
