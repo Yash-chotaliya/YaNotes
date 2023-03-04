@@ -1,5 +1,6 @@
 package com.example.yanotes.activities
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -7,9 +8,9 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.yanotes.NotesViewModel
 import com.example.yanotes.R
@@ -18,7 +19,10 @@ import kotlinx.android.synthetic.main.dialogue.*
 
 class ShowNotes : AppCompatActivity() {
 
+    private var isSaved:Boolean = false
+
     private lateinit var viewModel:NotesViewModel
+    @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shownotes)
@@ -31,14 +35,14 @@ class ShowNotes : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[NotesViewModel::class.java]
 
-        copy.setOnClickListener {
+        copynote.setOnClickListener {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clipData:ClipData = ClipData.newPlainText("data",text.text.toString())
             clipboard.setPrimaryClip(clipData)
             Toast.makeText(this,"copied",Toast.LENGTH_SHORT).show()
         }
 
-        delete.setOnClickListener {
+        deletenote.setOnClickListener {
             val builder = Dialog(this)
             builder.setContentView(layoutInflater.inflate(R.layout.dialogue,null))
             builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -52,6 +56,30 @@ class ShowNotes : AppCompatActivity() {
                 builder.dismiss()
                 startActivity(Intent(this,MainActivity::class.java))
             }
+        }
+
+        savenote.setOnClickListener {
+            if(!isSaved){
+                savenote.setImageResource(R.drawable.is_saved)
+                isSaved=true
+                Toast.makeText(this,"note saved",Toast.LENGTH_SHORT).show()
+            }
+            else{
+                savenote.setImageResource(R.drawable.not_saved)
+                isSaved=false
+                Toast.makeText(this,"note unsaved",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        checkifsave()
+    }
+
+    private fun checkifsave(){
+        if(!isSaved){
+            savenote.setImageResource(R.drawable.not_saved)
+        }
+        else{
+            savenote.setImageResource(R.drawable.is_saved)
         }
     }
 }
