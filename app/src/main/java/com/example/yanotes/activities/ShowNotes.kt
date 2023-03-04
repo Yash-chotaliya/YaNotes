@@ -19,8 +19,6 @@ import kotlinx.android.synthetic.main.dialogue.*
 
 class ShowNotes : AppCompatActivity() {
 
-    private var isSaved:Boolean = false
-
     private lateinit var viewModel:NotesViewModel
     @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,28 +56,12 @@ class ShowNotes : AppCompatActivity() {
             }
         }
 
-        savenote.setOnClickListener {
-            if(!isSaved){
-                savenote.setImageResource(R.drawable.is_saved)
-                isSaved=true
-                Toast.makeText(this,"note saved",Toast.LENGTH_SHORT).show()
-            }
-            else{
-                savenote.setImageResource(R.drawable.not_saved)
-                isSaved=false
-                Toast.makeText(this,"note unsaved",Toast.LENGTH_SHORT).show()
-            }
+        sharenote.setOnClickListener {
+            val share = Intent(Intent.ACTION_SEND)
+            share.type = "text/plain"
+            share.putExtra(Intent.EXTRA_TEXT, text.text)
+            startActivity(Intent.createChooser(share, "Share Via"))
         }
 
-        checkifsave()
-    }
-
-    private fun checkifsave(){
-        if(!isSaved){
-            savenote.setImageResource(R.drawable.not_saved)
-        }
-        else{
-            savenote.setImageResource(R.drawable.is_saved)
-        }
     }
 }
