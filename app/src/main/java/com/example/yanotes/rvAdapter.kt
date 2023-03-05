@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rvlayout.view.*
 
-class rvAdapter(private val context: Context, private val tlist:List<Notes>, private val listener:IrvAdapter):RecyclerView.Adapter<rvAdapter.ViewHolder>() {
+class rvAdapter(private val context: Context, private var tlist:List<Notes>, private val listener:IrvAdapter):RecyclerView.Adapter<rvAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewholder = ViewHolder(LayoutInflater.from(context).inflate(R.layout.rvlayout,parent,false))
