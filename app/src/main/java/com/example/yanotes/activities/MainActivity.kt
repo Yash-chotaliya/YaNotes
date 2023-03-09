@@ -13,8 +13,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.yanotes.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.dialogue.*
+import com.example.yanotes.databinding.ActivityMainBinding
+import com.example.yanotes.databinding.DialogueBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -22,23 +22,25 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
 
     private lateinit var notesList:List<Notes>
     private lateinit var viewmodel : NotesViewModel
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        rv.layoutManager = LinearLayoutManager(this)
+        binding.rv.layoutManager = LinearLayoutManager(this)
         viewmodel = ViewModelProvider(this)[NotesViewModel::class.java]
         viewmodel.getall.observe(this, Observer { list->
             notesList = list.reversed()
-            rv.adapter = rvAdapter(this,notesList,this)
+            binding.rv.adapter = rvAdapter(this,notesList,this)
         })
 
-        addnote.setOnClickListener {
+        binding.addnote.setOnClickListener {
             val intent = Intent(this, AddNoteActivity::class.java)
             startActivity(intent)
         }
 
-        searchview.setOnQueryTextListener(object :SearchView.OnQueryTextListener,
+        binding.searchview.setOnQueryTextListener(object :SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -63,24 +65,25 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
             filteredList = list
             if(filteredList.isEmpty()){
                 Toast.makeText(this,"no data found",Toast.LENGTH_SHORT).show()
-                rv.adapter = rvAdapter(this, emptyList(),this)
+                binding.rv.adapter = rvAdapter(this, emptyList(),this)
             }
             else{
-                rv.adapter = rvAdapter(this,filteredList,this)
+                binding.rv.adapter = rvAdapter(this,filteredList,this)
             }
         }
     }
     @SuppressLint("InflateParams")
     override fun onItemClickeddelete(x: Int) {
         val builder = Dialog(this)
-        builder.setContentView(layoutInflater.inflate(R.layout.dialogue,null))
+        val dialogueBinding = DialogueBinding.inflate(layoutInflater)
+        builder.setContentView(dialogueBinding.root)
         builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         builder.show()
 
-        builder.no.setOnClickListener {
+        dialogueBinding.no.setOnClickListener {
             builder.dismiss()
         }
-        builder.yes.setOnClickListener {
+        dialogueBinding.yes.setOnClickListener {
             viewmodel.delete(x)
             builder.dismiss()
         }

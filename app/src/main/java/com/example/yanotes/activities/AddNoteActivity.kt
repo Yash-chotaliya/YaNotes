@@ -12,27 +12,34 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.yanotes.Notes
 import com.example.yanotes.R
-import kotlinx.android.synthetic.main.activity_add_note.*
+import com.example.yanotes.databinding.ActivityAddNoteBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AddNoteActivity : AppCompatActivity() {
 
     private lateinit var viewModel: NotesViewModel
+    private lateinit var binding: ActivityAddNoteBinding
 
     @SuppressLint("SimpleDateFormat", "ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_note)
-        setSupportActionBar(toolbar)
+        binding = ActivityAddNoteBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
-        viewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
+        viewModel = ViewModelProvider(this)[NotesViewModel::class.java]
 
         val sdf = SimpleDateFormat("MMM dd , hh:mm a EEE")
         val currentDate = sdf.format(Date())
 
-        time.text = currentDate
+        binding.time.text = currentDate
 
+        if(Intent.ACTION_SEND==intent.action){
+            val data = intent.getStringExtra(Intent.EXTRA_TEXT)
+            Toast.makeText(this,data,Toast.LENGTH_SHORT).show()
+            //text.text = data as Editable
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -50,9 +57,9 @@ class AddNoteActivity : AppCompatActivity() {
     }
 
     private fun savedta(){
-        val x = tTitle.text.toString()
-        val y = time.text.toString()
-        val z = text.text.toString()
+        val x = binding.tTitle.text.toString()
+        val y = binding.time.text.toString()
+        val z = binding.text.text.toString()
 
         if(x.isEmpty()){
             Toast.makeText(this,"Title is mandatory",Toast.LENGTH_SHORT).show()

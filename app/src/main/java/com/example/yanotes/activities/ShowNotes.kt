@@ -13,53 +13,55 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.yanotes.NotesViewModel
-import com.example.yanotes.R
-import kotlinx.android.synthetic.main.activity_shownotes.*
-import kotlinx.android.synthetic.main.dialogue.*
+import com.example.yanotes.databinding.ActivityShownotesBinding
+import com.example.yanotes.databinding.DialogueBinding
 
 class ShowNotes : AppCompatActivity() {
 
     private lateinit var viewModel:NotesViewModel
+    private lateinit var binding: ActivityShownotesBinding
     @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shownotes)
-        setSupportActionBar(toolbar)
+        binding = ActivityShownotesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
         val id = intent.getIntExtra("id",0)
-        tTitle.text = intent.getStringExtra("title")
-        time.text = intent.getStringExtra("time")
-        text.text = intent.getStringExtra("text")
+        binding.tTitle.text = intent.getStringExtra("title")
+        binding.time.text = intent.getStringExtra("time")
+        binding.text.text = intent.getStringExtra("text")
 
         viewModel = ViewModelProvider(this)[NotesViewModel::class.java]
 
-        copynote.setOnClickListener {
+        binding.copynote.setOnClickListener {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clipData:ClipData = ClipData.newPlainText("data",text.text.toString())
+            val clipData:ClipData = ClipData.newPlainText("data",binding.text.text.toString())
             clipboard.setPrimaryClip(clipData)
             Toast.makeText(this,"copied",Toast.LENGTH_SHORT).show()
         }
 
-        deletenote.setOnClickListener {
+        binding.deletenote.setOnClickListener {
             val builder = Dialog(this)
-            builder.setContentView(layoutInflater.inflate(R.layout.dialogue,null))
+            val dialogueBinding = DialogueBinding.inflate(layoutInflater)
+            builder.setContentView(dialogueBinding.root)
             builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             builder.show()
 
-            builder.no.setOnClickListener {
+            dialogueBinding.no.setOnClickListener {
                 builder.dismiss()
             }
-            builder.yes.setOnClickListener {
+            dialogueBinding.yes.setOnClickListener {
                 viewModel.delete(id)
                 builder.dismiss()
                 startActivity(Intent(this,MainActivity::class.java))
             }
         }
 
-        sharenote.setOnClickListener {
+        binding.sharenote.setOnClickListener {
             val share = Intent(Intent.ACTION_SEND)
             share.type = "text/plain"
-            share.putExtra(Intent.EXTRA_TEXT, text.text)
+            share.putExtra(Intent.EXTRA_TEXT, binding.text.text)
             startActivity(Intent.createChooser(share, "Share Via"))
         }
 
