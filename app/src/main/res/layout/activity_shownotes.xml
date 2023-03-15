@@ -19,6 +19,7 @@
         android:id="@+id/tTitle"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:inputType="text"
         android:hint="@string/title"
         android:textColorHint="#959191"
         android:textColor="#000000"
@@ -27,7 +28,8 @@
         android:textSize="30sp"
         tools:ignore="TextViewEdits"
         android:padding="5dp"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/time"
@@ -45,18 +47,20 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="400dp">
-        <TextView
+        <EditText
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittextback"
+            android:inputType="textMultiLine"
             android:gravity="start"
             android:hint="@string/text"
             android:textColorHint="#959191"
             android:minLines="17"
             android:padding="5dp"
+            android:background="@drawable/edittextback"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:importantForAutofill="no" />
     </ScrollView>
 
     <LinearLayout
@@ -89,6 +93,15 @@
             android:background="@color/black"
             android:padding="10dp"
             android:src="@drawable/ic_baseline_share_24"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/updatenote"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@color/black"
+            android:padding="10dp"
+            android:src="@drawable/ic_baseline_check_24"
             tools:ignore="ContentDescription" />
 
     </LinearLayout>

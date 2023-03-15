@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.yanotes.Notes
 import com.example.yanotes.NotesViewModel
 import com.example.yanotes.databinding.ActivityShownotesBinding
 import com.example.yanotes.databinding.DialogueBinding
@@ -30,7 +31,7 @@ class ShowNotes : AppCompatActivity() {
         val id = intent.getIntExtra("id",0)
         binding.tTitle.text = intent.getStringExtra("title")
         binding.time.text = intent.getStringExtra("time")
-        binding.text.text = intent.getStringExtra("text")
+        binding.text.setText(intent.getStringExtra("text"))
 
         viewModel = ViewModelProvider(this)[NotesViewModel::class.java]
 
@@ -65,5 +66,22 @@ class ShowNotes : AppCompatActivity() {
             startActivity(Intent.createChooser(share, "Share Via"))
         }
 
+        binding.updatenote.setOnClickListener {
+            updateDta(id)
+        }
+    }
+    private fun updateDta(id:Int){
+        val x = binding.tTitle.text.toString()
+        val y = binding.time.text.toString()
+        val z = binding.text.text.toString()
+
+        val notes = Notes(0,x,y,z)
+        viewModel.insert(notes)
+
+        viewModel.delete(id)
+
+        startActivity(Intent(this,MainActivity::class.java))
+        finish()
     }
 }
+
