@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -64,7 +63,6 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
             }
             filteredList = list
             if(filteredList.isEmpty()){
-                Toast.makeText(this,"no data found",Toast.LENGTH_SHORT).show()
                 binding.rv.adapter = rvAdapter(this, emptyList(),this)
             }
             else{

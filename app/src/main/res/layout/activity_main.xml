@@ -26,11 +26,11 @@
         android:layout_below="@+id/name"
         app:iconifiedByDefault="false"
         app:searchIcon="@drawable/ic_baseline_search_24"
-        android:background="@drawable/searchviewbackground"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="15dp"
-        app:queryHint="search here..."/>
+        app:queryHint="search here..."
+        android:background="@drawable/searchviewbackground" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
