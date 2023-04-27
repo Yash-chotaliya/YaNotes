@@ -9,13 +9,14 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.yanotes.Notes
 import com.example.yanotes.NotesViewModel
 import com.example.yanotes.databinding.ActivityShownotesBinding
 import com.example.yanotes.databinding.DialogueBinding
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class ShowNotes : AppCompatActivity() {
 
@@ -39,7 +40,7 @@ class ShowNotes : AppCompatActivity() {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clipData:ClipData = ClipData.newPlainText("data",binding.text.text.toString())
             clipboard.setPrimaryClip(clipData)
-            Toast.makeText(this,"copied",Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this,"copied",Toast.LENGTH_SHORT).show()
         }
 
         binding.deletenote.setOnClickListener {
@@ -70,9 +71,11 @@ class ShowNotes : AppCompatActivity() {
             updateDta(id)
         }
     }
+    @SuppressLint("SimpleDateFormat")
     private fun updateDta(id:Int){
         val x = binding.tTitle.text.toString()
-        val y = binding.time.text.toString()
+        val sdf = SimpleDateFormat("MMM dd , hh:mm a EEE")
+        val y = sdf.format(Date())
         val z = binding.text.text.toString()
 
         val notes = Notes(0,x,y,z)
@@ -84,4 +87,3 @@ class ShowNotes : AppCompatActivity() {
         finish()
     }
 }
-
