@@ -15,6 +15,8 @@
 
         <activity
             android:name=".activities.SplashActivity"
+            android:screenOrientation = "portrait"
+            tools:ignore="LockedOrientationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +27,8 @@
 
         <activity
             android:name=".activities.ShowNotes"
+            android:screenOrientation = "portrait"
+            tools:ignore="LockedOrientationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -33,6 +37,8 @@
 
         <activity
             android:name=".activities.AddNoteActivity"
+            android:screenOrientation = "portrait"
+            tools:ignore="LockedOrientationActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -48,6 +54,8 @@
 
         <activity
             android:name=".activities.MainActivity"
+            android:screenOrientation = "portrait"
+            tools:ignore="LockedOrientationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
