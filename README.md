@@ -4,7 +4,9 @@
 
 ## Description
 
-Briefly describe your Android project built with MVVM architecture and Room database. Explain its purpose and key features, focusing on how MVVM and Room enhance the application.
+The YaNotes is an Android application that utilizes the MVVM (Model-View-ViewModel) architecture and Room database to efficiently store and manage each notes.
+Users can create, update, delete, copy and share notes. Each task consists of a title and description.
+Date and Time of note creation will automatically fetch by application 
 
 ## Table of Contents
 
