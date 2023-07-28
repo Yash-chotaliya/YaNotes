@@ -10,9 +10,7 @@
 
 ## Demo
 
-https://github.com/Yash-chotaliya/YaNotes/assets/96650011/17783ad7-cd0e-4f7c-b535-b34aec366bd3
-
-
+https://github.com/Yash-chotaliya/YaNotes/assets/96650011/f4d96a08-10cc-420b-bdc8-71abe23a83a4
 
 ## Installation
 
