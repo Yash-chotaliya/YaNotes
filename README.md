@@ -1,8 +1,6 @@
-[# YaNotes](https://github.com/Yash-chotaliya/YaNotes/blob/master/app/src/main/res/drawable-v24/splash.png)https://github.com/Yash-chotaliya/YaNotes/blob/master/app/src/main/res/drawable-v24/splash.png
-
 # Your Project Name
 
-![Project Logo/Image](link-to-your-logo-or-image.png)
+![Project Logo/Image](![splash](https://github.com/Yash-chotaliya/YaNotes/assets/96650011/8c024256-dd68-4d13-9ff1-4007f9f5444b))
 
 ## Description
 
