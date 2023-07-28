@@ -23,7 +23,7 @@
 
 Include some screenshots of your Android app that showcase its user interface and key features.
 
-<img src="https://github.com/Yash-chotaliya/YaNotes/assets/96650011/139e70c0-066c-4046-9126-faee8d0edae0" width="700" height="700" />
+<img src="https://github.com/Yash-chotaliya/YaNotes/assets/96650011/139e70c0-066c-4046-9126-faee8d0edae0" width="900" height="700" />
 
 
 ## Demo
