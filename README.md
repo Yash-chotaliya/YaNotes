@@ -23,6 +23,9 @@
 
 Include some screenshots of your Android app that showcase its user interface and key features.
 
+<img src="https://github.com/Yash-chotaliya/YaNotes/assets/96650011/e9bd14be-cfe4-4a0a-89a7-2fc390cb134e" width="700" height="700" />
+
+
 ## Demo
 
 Provide a link to a live demo or video demo of your Android app, demonstrating its functionalities.
