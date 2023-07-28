@@ -1,6 +1,6 @@
 # YaNotes
 
-<img src="https://github.com/Yash-chotaliya/YaNotes/assets/96650011/0531937b-d1b7-44e5-80d5-2fe745413613" width="250" height="350" />
+<img src="https://github.com/Yash-chotaliya/YaNotes/assets/96650011/0531937b-d1b7-44e5-80d5-2fe745413613" width="300" height="350" />
 
 ## Description
 
