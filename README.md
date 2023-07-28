@@ -1,6 +1,6 @@
 # YaNotes
 
-![splash](https://github.com/Yash-chotaliya/YaNotes/assets/96650011/ea236b85-975a-4152-bcbf-5c04d8fccff0=50x50)
+![splash](https://github.com/Yash-chotaliya/YaNotes/assets/96650011/ea236b85-975a-4152-bcbf-5c04d8fccff0 =50x50)
 
 ## Description
 
