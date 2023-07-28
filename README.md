@@ -1,6 +1,5 @@
 # YaNotes
 
-[Project Logo/Image](https://github.com/Yash-chotaliya/YaNotes/blob/master/app/src/main/res/drawable-v24/splash.png?raq=true)
 ![splash](https://github.com/Yash-chotaliya/YaNotes/assets/96650011/ea236b85-975a-4152-bcbf-5c04d8fccff0)
 
 ## Description
