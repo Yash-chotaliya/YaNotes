@@ -1,6 +1,9 @@
 # YaNotes
 
-<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/Yash-chotaliya/YaNotes/assets/96650011/ea236b85-975a-4152-bcbf-5c04d8fccff0" width="200" height="400" />
+![splash]()
+
+
 ## Description
 
 - The YaNotes is an Android application that utilizes the MVVM (Model-View-ViewModel) architecture and Room database to efficiently store and manage each notes.
