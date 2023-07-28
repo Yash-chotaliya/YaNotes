@@ -5,8 +5,8 @@
 ## Description
 
 - The YaNotes is an Android application that utilizes the MVVM (Model-View-ViewModel) architecture and Room database to efficiently store and manage each notes.
-- Users can create, update, delete, copy and share notes. Each task consists of a title and description.
-- Date and Time of note creation will automatically fetch by application 
+- Users can create, update, delete, copy and share notes. Each note consists of a title, description and time of note creation.
+- Date and Time of note creation will automatically fetch by application.
 
 ## Demo
 
