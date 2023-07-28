@@ -23,7 +23,7 @@
 
 Include some screenshots of your Android app that showcase its user interface and key features.
 
-<img src="https://github.com/Yash-chotaliya/YaNotes/assets/96650011/e9bd14be-cfe4-4a0a-89a7-2fc390cb134e" width="700" height="700" />
+<img src="https://www.canva.com/design/DAFhSo_oyAs/r8BHMWfmbuPYQ5c-M_pTfQ/edit?utm_content=DAFhSo_oyAs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" width="700" height="700" />
 
 
 ## Demo
