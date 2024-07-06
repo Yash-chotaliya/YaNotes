@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'com.example.yanotes'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.yanotes"
         minSdk 26
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -20,6 +20,7 @@ android {
 
     buildFeatures{
         viewBinding true
+        buildConfig true
     }
 
     buildTypes {
@@ -29,11 +30,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_18
-        targetCompatibility JavaVersion.VERSION_18
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '18'
+        jvmTarget = '17'
     }
 }
 
