@@ -1,4 +1,4 @@
-package com.example.yanotes
+package com.example.yanotes.database
 
 import android.content.Context
 import androidx.room.Database

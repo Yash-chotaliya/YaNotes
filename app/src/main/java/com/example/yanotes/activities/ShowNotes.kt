@@ -11,39 +11,37 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.yanotes.Notes
-import com.example.yanotes.NotesViewModel
-import com.example.yanotes.databinding.ActivityShownotesBinding
+import com.example.yanotes.database.Notes
+import com.example.yanotes.database.NotesViewModel
+import com.example.yanotes.databinding.ActivityShowNotesBinding
 import com.example.yanotes.databinding.DialogueBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 
 class ShowNotes : AppCompatActivity() {
 
-    private lateinit var viewModel:NotesViewModel
-    private lateinit var binding: ActivityShownotesBinding
+    private lateinit var viewModel: NotesViewModel
+    private lateinit var binding: ActivityShowNotesBinding
     @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityShownotesBinding.inflate(layoutInflater)
+        binding = ActivityShowNotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
 
         val id = intent.getIntExtra("id",0)
-        binding.tTitle.text = intent.getStringExtra("title")
+        binding.title.setText(intent.getStringExtra("title"))
         binding.time.text = intent.getStringExtra("time")
-        binding.text.setText(intent.getStringExtra("text"))
+        binding.description.setText(intent.getStringExtra("description"))
 
         viewModel = ViewModelProvider(this)[NotesViewModel::class.java]
 
-        binding.copynote.setOnClickListener {
+        binding.copy.setOnClickListener {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clipData:ClipData = ClipData.newPlainText("data",binding.text.text.toString())
+            val clipData:ClipData = ClipData.newPlainText("data",binding.description.text.toString())
             clipboard.setPrimaryClip(clipData)
-            //Toast.makeText(this,"copied",Toast.LENGTH_SHORT).show()
         }
 
-        binding.deletenote.setOnClickListener {
+        binding.delete.setOnClickListener {
             val builder = Dialog(this)
             val dialogueBinding = DialogueBinding.inflate(layoutInflater)
             builder.setContentView(dialogueBinding.root)
@@ -60,25 +58,25 @@ class ShowNotes : AppCompatActivity() {
             }
         }
 
-        binding.sharenote.setOnClickListener {
+        binding.share.setOnClickListener {
             val share = Intent(Intent.ACTION_SEND)
             share.type = "text/plain"
-            share.putExtra(Intent.EXTRA_TEXT, binding.text.text)
+            share.putExtra(Intent.EXTRA_TEXT, binding.description.text)
             startActivity(Intent.createChooser(share, "Share Via"))
         }
 
-        binding.updatenote.setOnClickListener {
+        binding.save.setOnClickListener {
             updateDta(id)
         }
     }
     @SuppressLint("SimpleDateFormat")
     private fun updateDta(id:Int){
-        val x = binding.tTitle.text.toString()
-        val sdf = SimpleDateFormat("MMM dd , hh:mm a EEE")
-        val y = sdf.format(Date())
-        val z = binding.text.text.toString()
+        val title = binding.title.text.toString()
+        val sdf = SimpleDateFormat("MMM dd, hh:mm a")
+        val time = sdf.format(Date())
+        val description = binding.description.text.toString()
 
-        val notes = Notes(0,x,y,z)
+        val notes = Notes(0, title, time, description)
         viewModel.insert(notes)
 
         viewModel.delete(id)

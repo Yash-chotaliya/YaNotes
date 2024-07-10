@@ -7,11 +7,13 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.SearchView
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.yanotes.*
+import com.example.yanotes.database.Notes
+import com.example.yanotes.database.NotesViewModel
 import com.example.yanotes.databinding.ActivityMainBinding
 import com.example.yanotes.databinding.DialogueBinding
 import java.util.*
@@ -19,7 +21,7 @@ import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity(), IrvAdapter {
 
-    private lateinit var notesList:List<Notes>
+    private lateinit var notesList : List<Notes>
     private lateinit var viewmodel : NotesViewModel
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +29,26 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.rv.layoutManager = LinearLayoutManager(this)
+        notesList = arrayListOf()
+
+        binding.noNotesText.visibility = View.GONE
+        binding.rv.visibility = View.VISIBLE
+
+        binding.rv.layoutManager = GridLayoutManager(this,2)
         viewmodel = ViewModelProvider(this)[NotesViewModel::class.java]
-        viewmodel.getall.observe(this, Observer { list->
+        viewmodel.getAll.observe(this) { list ->
+
             notesList = list.reversed()
-            binding.rv.adapter = rvAdapter(this,notesList,this)
-        })
+            if(notesList.isEmpty()){
+                binding.noNotesText.visibility = View.VISIBLE
+                binding.rv.visibility = View.GONE
+            }
+            else{
+                binding.noNotesText.visibility = View.GONE
+                binding.rv.visibility = View.VISIBLE
+                binding.rv.adapter = RVAdapter(this, notesList, this)
+            }
+        }
 
         binding.addnote.setOnClickListener {
             val intent = Intent(this, AddNoteActivity::class.java)
@@ -46,8 +62,16 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                filterList(newText)
-                return true
+
+                if(notesList.isNotEmpty()){
+                    binding.noNotesText.visibility = View.GONE
+                    binding.rv.visibility = View.VISIBLE
+                    filterList(newText)
+                    return true
+                }
+                binding.noNotesText.visibility = View.VISIBLE
+                binding.rv.visibility = View.GONE
+                return false
             }
         })
     }
@@ -63,15 +87,18 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
             }
             filteredList = list
             if(filteredList.isEmpty()){
-                binding.rv.adapter = rvAdapter(this, emptyList(),this)
+                binding.noNotesText.visibility = View.VISIBLE
+                binding.rv.visibility = View.GONE
             }
             else{
-                binding.rv.adapter = rvAdapter(this,filteredList,this)
+                binding.noNotesText.visibility = View.GONE
+                binding.rv.visibility = View.VISIBLE
+                binding.rv.adapter = RVAdapter(this,filteredList,this)
             }
         }
     }
     @SuppressLint("InflateParams")
-    override fun onItemClickeddelete(x: Int) {
+    override fun onItemClickedDelete(x: Int) {
         val builder = Dialog(this)
         val dialogueBinding = DialogueBinding.inflate(layoutInflater)
         builder.setContentView(dialogueBinding.root)
@@ -87,12 +114,12 @@ class MainActivity : AppCompatActivity(), IrvAdapter {
         }
     }
 
-    override fun onlayoutclicked(notes: Notes) {
+    override fun onLayoutClicked(notes: Notes) {
         val intent = Intent(this, ShowNotes::class.java)
         intent.putExtra("id",notes.id)
         intent.putExtra("title",notes.title)
         intent.putExtra("time",notes.time)
-        intent.putExtra("text",notes.text)
+        intent.putExtra("description",notes.description)
         startActivity(intent)
     }
 

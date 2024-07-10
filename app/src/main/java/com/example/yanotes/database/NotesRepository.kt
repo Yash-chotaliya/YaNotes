@@ -1,12 +1,12 @@
-package com.example.yanotes
+package com.example.yanotes.database
 
 import androidx.lifecycle.LiveData
 
 class NotesRepository(private val notesDao: NotesDao) {
 
-    val getall : LiveData<List<Notes>> = notesDao.getAll()
-    suspend fun insert(notes:Notes){
-        notesDao.insertt(notes)
+    val getAll : LiveData<List<Notes>> = notesDao.getAll()
+    suspend fun insert(notes: Notes){
+        notesDao.insert(notes)
     }
 
     suspend fun delete(x:Int){

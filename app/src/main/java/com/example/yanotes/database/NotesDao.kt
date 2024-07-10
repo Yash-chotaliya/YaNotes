@@ -1,4 +1,4 @@
-package com.example.yanotes
+package com.example.yanotes.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
@@ -7,7 +7,7 @@ import androidx.room.*
 interface NotesDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertt(notes: Notes)
+    suspend fun insert(notes: Notes)
 
     @Query("delete from Notes_Table where id=:x")
     suspend fun delete(x:Int)

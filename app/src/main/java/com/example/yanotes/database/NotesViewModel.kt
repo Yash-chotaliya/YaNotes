@@ -1,30 +1,30 @@
-package com.example.yanotes
+package com.example.yanotes.database
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class NotesViewModel(application: Application):AndroidViewModel(application) {
 
-    val getall : LiveData<List<Notes>>
+    val getAll : LiveData<List<Notes>>
     private val repository : NotesRepository
 
     init {
         val notesDao = NoteDatabase.getInstance(application).getNoteDao()
         repository = NotesRepository(notesDao)
-        getall = repository.getall
+        getAll = repository.getAll
     }
 
-    fun insert(notes:Notes){
-        viewModelScope.launch(Dispatchers.IO){
+    fun insert(notes: Notes){
+        viewModelScope.launch {
             repository.insert(notes)
         }
+
     }
     fun delete(x:Int){
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch {
             repository.delete(x)
         }
     }
